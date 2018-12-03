@@ -1,6 +1,7 @@
 from random import *
-def getrandomList (nb: int, mn: int, mx:int) -> list:
-	return [randint(mn,mx) for i in range (nb)]
+
+def getRandomList(nb : int, mn : int, mx : int) -> list:
+    return [ randint(mn, mx) for i in range(nb)]
 
 def indexOf(lst:list, val:int)->int:
 	i=0
@@ -21,28 +22,29 @@ def IndexOfSorted (lst:list,  val:int)-> int:
 	else:
 		print("la valeur",val,"n'est pas dans la liste")
 	return ival
-"""
-for _ in range(10000):
-	lst=getrandomList(nb=randint(0,15),mn=-100,mx=100)
-	lst.sort()
-	val=randint(-50,50)
-	idx=IndexOfSorted(lst=lst,val=val)
-	assert lst[idx]==val if idx!=-1 else val not in lst, f"{lst} : La position de {val} retourne {idx} qui semble faux"
-	print('Tout est ok')
-"""
+
 def binarySearch(lst:list, val:int) ->int:
 	result=-1
 	ideb=0
 	ifin=len(lst)-1
-	while ideb<ifin:
-		imilieu=ifin-ideb//2
-		if val<=lst[imilieu]:
-			ifin=imilieu-1
-		else:
-			ideb=imilieu+1
-	if lst[ideb]==val:
-		result=ideb
-	elif lst[ifin]==val:
-		result=ifin
-	return result
-print(binarySearch([1,2,4,5,9,10,22],5))
+	if val>lst[ideb] and val<lst[ifin]:
+		while ideb<ifin:
+			imilieu=ifin-ideb//2
+			if val<=lst[imilieu]:
+				ifin=imilieu-1
+			else:
+				ideb=imilieu+1
+		if lst[ideb]==val:
+			result=ideb
+		elif lst[ifin]==val:
+			result=ifin
+		return result
+print(binarySearch([1,2,4,5,9,10,22],1))
+
+for _ in range(10_000):
+    lst = getRandomList(nb=randint(0,15), mn=-randint(1,100), mx=randint(1,100))
+    lst.sort()
+    val = randint(-50, 50)
+    idx = binarySearch(lst=lst, val=val)
+    assert lst[idx]==val if idx!=-1 else val not in lst, f"{lst} : La position de {val} retourne {idx} qui semble incorrecte"
+    print('tout est ok')
