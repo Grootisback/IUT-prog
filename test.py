@@ -1,5 +1,5 @@
 from random import *
-"""
+
 def getRandomList(nb : int, mn : int, mx : int) -> list:
     return [ randint(mn, mx) for i in range(nb)]
 
@@ -48,7 +48,7 @@ for _ in range(10_000):
     idx = binarySearch(lst=lst, val=val)
     assert lst[idx]==val if idx!=-1 else val not in lst, f"{lst} : La position de {val} retourne {idx} qui semble incorrecte"
     print('tout est ok')
-"""
+
 def getReponse (val:int)->str:
 	print("proposition de l'ordinateur : ",val)
 	reponse=input("Est-ce, (E)gal, plus (G)rand ou plus (P)etit ? (tapez E, G ou P): ")
@@ -126,4 +126,30 @@ def adapterIntervalle (interv:list,val:int,rep:str)->list:
         result=interv
     else:
         result=None
+    return result
+"""
+Écrire une fonction choisirNombre qui reçoit en paramètre deux entiers mn et mx représentant les bornes inférieures et supérieures de l'intervalle de recherche.
+
+Cette fonction retourne le nombre choisi qui correspond au milieu de l'intervalle. Veillez à ce que la fonction retourne un entier !
+"""
+def choisirNombre(mn:int, mx:int)->int:
+    milieu=(mx+mn)//2
+    return milieu
+
+def devinerNombre (mn:int,mx:int)->str:
+    interv=[mn,mx]
+    print("veuillez choisir un nombre entre 0 et 100 inclus")
+    i=0
+    reponse="rien"
+    while reponse!="E" and mn!=mx:
+        nbtest=choisirNombre(mn=interv[0], mx=interv[1])
+        reponse=(getReponse(val=nbtest))
+        print("interv avant", interv)
+        interv=adapterIntervalle(interv=interv,val=nbtest,rep=reponse)
+        print("interv après", interv)
+        i+=1
+    if mn==mx:
+        result=("Je n'ai pas trouvé !?")
+    else:
+        result=("il a fallu", i,"essai pour trouver la valeur", nbtest)
     return result
