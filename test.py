@@ -1,5 +1,5 @@
 from random import *
-
+"""
 def getRandomList(nb : int, mn : int, mx : int) -> list:
     return [ randint(mn, mx) for i in range(nb)]
 
@@ -28,7 +28,7 @@ def binarySearch(lst:list, val:int) ->int:
 	ideb=0
 	ifin=len(lst)-1
 	if val>lst[ideb] and val<lst[ifin]:
-		while ideb<ifin:
+		while ideb<=ifin and result==-1:
 			imilieu=ifin-ideb//2
 			if val<=lst[imilieu]:
 				ifin=imilieu-1
@@ -48,3 +48,16 @@ for _ in range(10_000):
     idx = binarySearch(lst=lst, val=val)
     assert lst[idx]==val if idx!=-1 else val not in lst, f"{lst} : La position de {val} retourne {idx} qui semble incorrecte"
     print('tout est ok')
+"""
+def getReponse (val:int)->str:
+	print("proposition de l'ordinateur : ",val)
+	reponse=input("Est-ce, (E)gal, plus (G)rand ou plus (P)etit ? (tapez E, G ou P): ")
+	reponse.capitalize()
+	if reponse =="E" or reponse =="G" or reponse =="P":
+		result=reponse
+	else:
+		print("saisie", reponse,"incorrecte, tapez E, G ou P")
+		print(getReponse(val=val))
+	return result
+val=randint(0,100)
+print(getReponse(val=val))
