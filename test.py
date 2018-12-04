@@ -141,15 +141,14 @@ def devinerNombre (mn:int,mx:int)->str:
     print("veuillez choisir un nombre entre 0 et 100 inclus")
     i=0
     reponse="rien"
-    while reponse!="E" and mn!=mx:
+    nbtest=-1
+    while reponse!="E" and nbtest!=min:
         nbtest=choisirNombre(mn=interv[0], mx=interv[1])
         reponse=(getReponse(val=nbtest))
-        print("interv avant", interv)
         interv=adapterIntervalle(interv=interv,val=nbtest,rep=reponse)
-        print("interv après", interv)
         i+=1
     if mn==mx:
-        result=("Je n'ai pas trouvé !?")
+        result="Je n'ai pas trouvé !?"
     else:
-        result=("il a fallu", i,"essai pour trouver la valeur", nbtest)
+        result='il a fallu', i,'essai pour trouver la valeur', nbtest
     return result
