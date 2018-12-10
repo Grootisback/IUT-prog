@@ -68,12 +68,42 @@ def getPosMin(tab:list):
     return (ligne,col)
     print(getPosMin(tab = [ [ 2, 1, 3], [ 6, 9 ], [ 0, 8, 1, 2 ]])) # Doit afficher (2,0)
 
-    def getCarre2d (n:int)->list:
-    lst=[]
-    for i in range(n):
-        ligne=[]
-        for j in range (n):
-            ligne.append(randint(1,n**2))
-        lst.append(ligne)
-    return lst
-    print(getCarre2d(5))
+def getCarre2d (n:int)->list:
+lst=[]
+for i in range(n):
+    ligne=[]
+    for j in range (n):
+        ligne.append(randint(1,n**2))
+    lst.append(ligne)
+return lst
+print(getCarre2d(5))
+
+def getSommeLignes(tab:list)->list:
+    lstsom=[]
+    for i in range(len(tab)):
+        lstsom.append(sum(tab[i]))
+    return lstsom
+print(getSommeLignes( tab = [ [ 2, 1, 6 ], [ 4, 8, 9 ], [ 3, 5, 7 ] ] )) # doit afficher [ 9, 21, 15]
+def getSommeColonnes(tab=list)->list:
+    lstsom=[]
+    for i in range(len(tab)):
+        somme=0
+        for j in range(len(tab)):
+            somme+=tab[j][i]
+        lstsom.append(somme)
+    return lstsom
+print(getSommeColonnes( tab = [ [ 2, 1, 6 ], [ 4, 8, 9 ], [ 3, 5, 7 ] ] )) # doit afficher [ 9, 14, 22 ]
+
+def getSommeDiagonale1(tab:list)->int:
+    somme=0
+    for i in range(len(tab)):
+        somme+=tab[i][i]
+    return somme
+print(getSommeDiagonale1( tab = [ [ 2, 1, 6 ], [ 4, 8, 9 ], [ 3, 5, 7 ] ] )) # doit afficher 17
+
+def getSommeDiagonale2(tab:list)->int:
+    somme=0
+    for i in range(len(tab)):
+        somme+=tab[i][len(tab)-1-i]
+    return somme
+print(getSommeDiagonale2( tab = [ [ 2, 1, 9 ], [ 4, 8, 6 ], [ 3, 5, 7 ] ] )) # doit afficher 20
