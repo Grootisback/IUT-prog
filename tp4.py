@@ -68,4 +68,12 @@ def getPosMin(tab:list):
     return (ligne,col)
     print(getPosMin(tab = [ [ 2, 1, 3], [ 6, 9 ], [ 0, 8, 1, 2 ]])) # Doit afficher (2,0)
 
-    
+    def getCarre2d (n:int)->list:
+    lst=[]
+    for i in range(n):
+        ligne=[]
+        for j in range (n):
+            ligne.append(randint(1,n**2))
+        lst.append(ligne)
+    return lst
+    print(getCarre2d(5))
