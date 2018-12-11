@@ -107,3 +107,26 @@ def getSommeDiagonale2(tab:list)->int:
         somme+=tab[i][len(tab)-1-i]
     return somme
 print(getSommeDiagonale2( tab = [ [ 2, 1, 9 ], [ 4, 8, 6 ], [ 3, 5, 7 ] ] )) # doit afficher 20
+
+def AffichageCarreMagique(tab:list)->None:
+    sommelignes=getSommeLignes(tab)
+    sommecol=getSommeColonnes(tab)
+    sommediag1=getSommeDiagonale1(tab)
+    sommediag2=getSommeDiagonale2(tab)
+    sep=("+---")*len(tab)+'+'
+    sep2="|"
+    for i in range(len(tab)):
+        print(f"{sep:>{len(sep)+2}}")
+        print(' ', end='')
+        for j in range(len(tab)):
+            print(f"{sep2:^3}", end='')
+            print(tab[i][j], end='')   
+        print(f"{sep2:^3}", end='')
+        print(sommelignes[i])
+    print(sommediag1, end='  ')
+    for j in range(len(tab)):
+        print(sommecol[j], end='  ')
+    print(' ',sommediag2)
+    return None
+print(AffichageCarreMagique([ [ 2, 1, 9 ], [ 4, 8, 6 ], [ 3, 5, 7 ] ]))
+
