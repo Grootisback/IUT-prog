@@ -142,3 +142,17 @@ def zeros (n1:int,n2:int)-> list:
     return tab
 
 print (zeros(5,5))
+
+def trouverMilieu(taille:int)->int:
+    milieu=round(taille/2+0.5)
+    return milieu
+def creerCarreMagique (n:int)->list:
+    tab=[]
+    if n%2==0:
+        carremagique=tab
+    else:
+        milieu=trouverMilieu(n)
+        tab= zeros(n)
+        tab[0][milieu]
+
+    return carreMagique
