@@ -130,3 +130,15 @@ def AffichageCarreMagique(tab:list)->None:
     return None
 print(AffichageCarreMagique([ [ 2, 1, 9 ], [ 4, 8, 6 ], [ 3, 5, 7 ] ]))
 
+def zeros (n1:int,n2:int)-> list:
+    tab=[]
+    if n1==0 or n2==0:
+        print("l'une des valeur est égale à 0. Il est impossible de créer le tableau")
+    else:
+        for i in range(n1):
+            tab.append([0])
+            for j in range(n2-1):
+                tab[i].append(0)
+    return tab
+
+print (zeros(5,5))
